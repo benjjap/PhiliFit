@@ -10,21 +10,21 @@ import static java.lang.Math.pow;
  *
  * @author Felip
  */
-public class Physical {
-    private int height;
-    private int weight;
-    private double bmi;
-    private boolean exercise;
+public class Physique {
+    private float height;
+    private float weight;
+    private float bmi;
+    private int exercise;
 
 
-    public Physical() {
+    public Physique() {
         this.height = 0;
         this.weight = 0;
         this.bmi = 0;
-        this.exercise = false;
+        this.exercise = 0;
 
     }
-    public Physical(int height, int weight, boolean exercise) {
+    public Physique(float height, float weight, int exercise) {
         this.height = height;
         this.weight = weight;
         this.exercise = exercise;
@@ -32,35 +32,35 @@ public class Physical {
 
     //Getters and setters
 
-    public int getHeight() {
+    public float getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(float height) {
         this.height = height;
     }
 
-    public int getWeight() {
+    public float getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(float weight) {
         this.weight = weight;
     }
 
-    public double getBmi() {
+    public float getBmi() {
         return bmi;
     }
 
-    public void setBmi(double bmi) {
+    public void setBmi(float bmi) {
         this.bmi = bmi;
     }
 
-    public boolean getExercise() {
+    public int getExercise() {
         return exercise;
     }
 
-    public void setExercise(boolean exercise) {
+    public void setExercise(int exercise) {
         this.exercise = exercise;
     }
 

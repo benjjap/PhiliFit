@@ -10,7 +10,7 @@ public class Patient extends Person{
 
     private String email;
     private String password;
-    private Physical physical_state;
+    private Physique physical_state;
 
 
     public Patient(int rut, String first_name, String last_name, Date birth_date, String email, String password){
@@ -40,11 +40,11 @@ public class Patient extends Person{
         this.password = password;
     }
 
-    public Physical getPhysical_state() {
+    public Physique getPhysical_state() {
         return physical_state;
     }
 
-    public void setPhysical_state(Physical physical_state){
+    public void setPhysical_state(Physique physical_state){
         this.physical_state = physical_state;
     }
 }
