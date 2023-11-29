@@ -16,7 +16,7 @@ public interface PatientDB {
     public ArrayList<Patient> Read(Connection link);
     public boolean Create(Connection link, Patient patient);
     public boolean Update(Connection link, Patient patient);
-    public boolean Delete(Connection link, String rut);
-    public Patient Search(Connection link, String rut);
-    public int validate(Connection link, int rut);
+    public boolean Delete(Connection link, int rut);
+    public Patient Search(Connection link, int rut);
+    public int Validate(Connection link, int rut);
 }

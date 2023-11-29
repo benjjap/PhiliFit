@@ -59,11 +59,11 @@ public class PatientG implements PatientDB{
         return false;
     }
     
-    public Patient Search(Connection link, String user){
+    public Patient Search(Connection link, int rut){
         Patient patient=new Patient();
         try {
             Statement s = link.createStatement();
-            query="select * from Patient where rut='"+user+"'";
+            query="select * from Patient where rut_patient='"+rut+"'";
             ResultSet rs=s.executeQuery(query);
             
             while (rs.next()){
@@ -134,15 +134,4 @@ public class PatientG implements PatientDB{
         
         return 1;
     }
-
-    @Override
-    public boolean Delete(Connection link, String rut) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public int validate(Connection link, int rut) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
 }

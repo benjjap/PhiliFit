@@ -53,14 +53,14 @@ public class register extends javax.swing.JFrame {
         pass = new javax.swing.JFormattedTextField();
         date = new javax.swing.JFormattedTextField();
         email = new javax.swing.JFormattedTextField();
-        fondo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         jScrollPane1.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        back.setText("CUM BACK");
+        back.setText("COME BACK");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
@@ -161,8 +161,20 @@ public class register extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 470, 440));
 
-        fondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\Felip\\OneDrive\\Imágenes\\gimnasio.jpg")); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 770));
+        jPanel2.setBackground(new java.awt.Color(102, 255, 153));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 730, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 770, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -180,7 +192,7 @@ public class register extends javax.swing.JFrame {
         Connection link = conn.Connect();
         PatientG patient = new PatientG();
         Patient pat = new Patient();
-        Login log = new Login();
+        registerEstate est = new registerEstate();
         
         if(name.getText().equals("") || date.getText().equals("") || email.getText().equals("")|| lastName.getText().equals("") || pass.getText().equals("") || rut.equals("")){
         JOptionPane.showMessageDialog(null, "Hay celdas vacias");
@@ -201,7 +213,7 @@ public class register extends javax.swing.JFrame {
                 }
                 if(patient.Create(conn.Connect(), pat)== true){
                     JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente");
-                    log.setVisible(true);
+                    est.setVisible(true);
                     this.dispose();
                 }
                 else{
@@ -253,7 +265,6 @@ public class register extends javax.swing.JFrame {
     private javax.swing.JButton back;
     private javax.swing.JFormattedTextField date;
     private javax.swing.JFormattedTextField email;
-    private javax.swing.JLabel fondo;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -262,6 +273,7 @@ public class register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JFormattedTextField lastName;
     private javax.swing.JFormattedTextField name;
