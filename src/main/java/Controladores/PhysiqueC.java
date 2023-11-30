@@ -72,13 +72,16 @@ public class PhysiqueC implements PhysiqueDB {
         return null;
     }
     
-    public boolean Update(Connection link, int rut_patient, float weight, float height, int do_exercise){
+    public boolean Update(Connection link, int rut_patient, float weight, float height, float bmi, int do_exercise){
+       
         try{
+            Patient pat = new Patient();
             Statement s = link.createStatement();
-            query="UPDATE Physique set weight='"+weight+"',height='"+height+"',do_exercise='"+do_exercise+"' WHERE rut_patient = '"+rut_patient+"'";
+            query="UPDATE Physique set weight='"+weight+"',height='"+height+"',do_exercise='"+do_exercise+"', bmi = '"+bmi+"', rut_patient = '"+rut_patient+"' WHERE rut_patient = '"+rut_patient+"'";
             s.executeUpdate(query);
+
             return true;
-            
+
         }catch (SQLException ex) {
             Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
         }

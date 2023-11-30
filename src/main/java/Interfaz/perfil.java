@@ -53,7 +53,6 @@ public class perfil extends javax.swing.JFrame {
         height = new javax.swing.JLabel();
         weight = new javax.swing.JLabel();
         bmi = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         nombre = new javax.swing.JLabel();
         lastName = new javax.swing.JLabel();
@@ -61,6 +60,8 @@ public class perfil extends javax.swing.JFrame {
         date = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
         back = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
+        update = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,13 +81,6 @@ public class perfil extends javax.swing.JFrame {
         bmi.setForeground(new java.awt.Color(51, 51, 51));
         bmi.setText("BMI:");
 
-        jButton1.setText("DELETE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout RUTLayout = new javax.swing.GroupLayout(RUT);
         RUT.setLayout(RUTLayout);
         RUTLayout.setHorizontalGroup(
@@ -94,16 +88,10 @@ public class perfil extends javax.swing.JFrame {
             .addGroup(RUTLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RUTLayout.createSequentialGroup()
-                        .addGap(0, 389, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addGroup(RUTLayout.createSequentialGroup()
-                        .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(height)
-                            .addComponent(weight)
-                            .addComponent(bmi))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(height)
+                    .addComponent(weight)
+                    .addComponent(bmi))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         RUTLayout.setVerticalGroup(
             RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,9 +102,7 @@ public class perfil extends javax.swing.JFrame {
                 .addComponent(weight)
                 .addGap(35, 35, 35)
                 .addComponent(bmi)
-                .addGap(17, 17, 17)
-                .addComponent(jButton1)
-                .addContainerGap())
+                .addGap(47, 47, 47))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -165,7 +151,7 @@ public class perfil extends javax.swing.JFrame {
                         .addComponent(nombre)
                         .addGap(126, 126, 126)
                         .addComponent(lastName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
                         .addComponent(back)))
                 .addContainerGap())
         );
@@ -186,6 +172,20 @@ public class perfil extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
+        delete.setText("DELETE");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
+
+        update.setText("UPDATE");
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
         fondo.setLayout(fondoLayout);
         fondoLayout.setHorizontalGroup(
@@ -193,11 +193,17 @@ public class perfil extends javax.swing.JFrame {
             .addGroup(fondoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(RUT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(update)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(delete)
+                        .addGap(16, 16, 16))
+                    .addGroup(fondoLayout.createSequentialGroup()
+                        .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RUT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,7 +212,11 @@ public class perfil extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(RUT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(423, 423, 423))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(delete)
+                    .addComponent(update))
+                .addGap(387, 387, 387))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,7 +227,7 @@ public class perfil extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 476, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 508, Short.MAX_VALUE)
         );
 
         pack();
@@ -259,7 +269,7 @@ public class perfil extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         ConnectDB conn = new ConnectDB();
         Connection link = conn.Connect();
         PatientG patient = new PatientG();
@@ -270,7 +280,23 @@ public class perfil extends javax.swing.JFrame {
             this.dispose();
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        ConnectDB conn = new ConnectDB();
+        Connection link = conn.Connect();
+        PatientG patient = new PatientG();
+        PhysiqueC phyC = new PhysiqueC();
+        Physique phy = new Physique();
+        Patient pat = new Patient();
+        pat = patient.Search(link, getRut());
+        phy = phyC.Search(link, getRut());
+        
+        registerEstate res = new registerEstate();
+        res.setRut(getRut());
+        res.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_updateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,14 +338,15 @@ public class perfil extends javax.swing.JFrame {
     private javax.swing.JButton back;
     private javax.swing.JLabel bmi;
     private javax.swing.JLabel date;
+    private javax.swing.JButton delete;
     private javax.swing.JLabel email;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel height;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lastName;
     private javax.swing.JLabel nombre;
+    private javax.swing.JButton update;
     private javax.swing.JLabel weight;
     // End of variables declaration//GEN-END:variables
 }
