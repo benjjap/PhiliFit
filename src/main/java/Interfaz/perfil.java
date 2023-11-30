@@ -194,6 +194,7 @@ public class perfil extends javax.swing.JFrame {
         
         if(patient.Delete(conn.Connect(), getRut())==true){
             JOptionPane.showMessageDialog(null, "Se ha eliminado exitosamente");
+            this.dispose();
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

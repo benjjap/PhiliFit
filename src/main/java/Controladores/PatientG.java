@@ -17,6 +17,7 @@ import java.sql.PreparedStatement;
 
 public class PatientG implements PatientDB{
     public String query;
+    public String query2;
     
     public ArrayList<Patient> Read(Connection link){
 
@@ -104,9 +105,10 @@ public class PatientG implements PatientDB{
            try {
             
             Statement s = link.createStatement();
-            query="delete * Patient where rut_patient='"+rut+"'";
-            s.executeQuery(query);
-            
+            query = "delete from Physique where rut_patient='"+rut+"'";
+            query2="delete from Patient where rut_patient='"+rut+"'";
+            s.executeUpdate(query);
+            s.executeUpdate(query2);
             return true;
             
         }catch (SQLException ex) {
@@ -123,6 +125,25 @@ public class PatientG implements PatientDB{
         try{
             PreparedStatement ps = link.prepareStatement(query);
             ps.setInt(1, rut);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+        } catch (SQLException ex){
+            Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return 1;
+    }
+    
+    public int Validate(int rut, String pass, Connection link){
+        query = "SELECT count(rut_patient) FROM Patient WHERE rut_patient = ? AND password = ?";
+        
+        try{
+            PreparedStatement ps = link.prepareStatement(query);
+            ps.setInt(1, rut);
+            ps.setString(2, pass);
             ResultSet rs = ps.executeQuery();
             
             if(rs.next()){
