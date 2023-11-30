@@ -176,7 +176,7 @@ public class listRoutine extends javax.swing.JFrame {
         model.addColumn("Descripcion");
         
         routine.setModel(model);
-        bmi.setText("Su IMC es "+Math.round(pat.getBmi()));
+        bmi.setText("Su IMC es "+pat.getBmi());
         String [] datos = new String[3];
         
         try{

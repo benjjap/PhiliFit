@@ -255,7 +255,7 @@ public class perfil extends javax.swing.JFrame {
             email.setText("Correo Electronico: "+pat.getEmail());
             weight.setText("Peso: "+String.valueOf(phy.getWeight()));
             height.setText("Altura: "+String.valueOf(phy.getHeight()));
-            bmi.setText("Bmi: "+String.valueOf((int) phy.getBmi()));
+            bmi.setText("IMC: "+String.valueOf((float) phy.getBmi()));
         }
         else{
             JOptionPane.showMessageDialog(null, "Error al cargar los datos");
