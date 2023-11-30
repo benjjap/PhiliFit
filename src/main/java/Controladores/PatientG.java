@@ -90,7 +90,7 @@ public class PatientG implements PatientDB{
     public boolean Update(Connection link, Patient patient){
         try{
             Statement s = link.createStatement();
-            query="UPDATE Clientes set first_name='"+patient.getFirst_name()+"',last_name='"+patient.getLast_name()+"',birth_date='"+patient.getBirth_date()+"',email='"+patient.getEmail()+"',password='"+patient.getPassword()+"' WHERE rut='"+patient.getRut()+"'";
+            query="UPDATE Patient set first_name='"+patient.getFirst_name()+"',last_name='"+patient.getLast_name()+"',birth_date='"+patient.getBirth_date()+"',email='"+patient.getEmail()+"',password='"+patient.getPassword()+"' WHERE rut='"+patient.getRut()+"'";
             s.executeUpdate(query);
             return true;
             
