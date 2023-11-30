@@ -19,23 +19,23 @@ import Clases.Trainer;
  */
 public class TrainerC {
     public String query;
-    
+
     public Trainer Search(Connection link, int rut){
-        Trainer trainer=new Patient();
+        Trainer trainer=new Trainer();
         try {
             Statement s = link.createStatement();
             query="select * from Trainer where rut_trainer='"+rut+"'";
             ResultSet rs=s.executeQuery(query);
-            
+
             while (rs.next()){
                trainer.setRut(rs.getInt("rut_trainer"));
                trainer.setFirst_name(rs.getString("first_name"));
                trainer.setLast_name(rs.getString("last_name"));
                trainer.setBirth_date(rs.getDate("birth_date"));
-               trainer.setEmail(rs.getString("specialty"));
+               trainer.setSpecialty(rs.getString("specialty"));
             }
             return trainer;
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
         }
