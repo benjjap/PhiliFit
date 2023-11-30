@@ -33,7 +33,6 @@ public class PhysiqueC implements PhysiqueDB {
         }catch (SQLException ex) {
             Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
         }
-  
     }
     
     public boolean Create(Connection link, Physique physique, int rut_patient){
@@ -48,6 +47,29 @@ public class PhysiqueC implements PhysiqueDB {
             Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    
+    public Physique Search(Connection link, int rut){
+        Physique physique=new Physique();
+        try {
+            Statement s = link.createStatement();
+            query="select * from Physique where rut_patient='"+rut+"'";
+            ResultSet rs=s.executeQuery(query);
+            
+            while (rs.next()){
+               physique.setWeight(rs.getInt("weight"));
+               physique.setHeight(rs.getFloat("height"));
+               physique.setBmi(rs.getFloat("bmi"));
+               physique.setExercise(rs.getInt("do_exercise"));
+                
+            }
+            return physique;
+  
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     
