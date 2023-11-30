@@ -213,6 +213,7 @@ public class register extends javax.swing.JFrame {
                 }
                 if(patient.Create(conn.Connect(), pat)== true){
                     JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente");
+                    est.setRut(pat.getRut());
                     est.setVisible(true);
                     this.dispose();
                 }

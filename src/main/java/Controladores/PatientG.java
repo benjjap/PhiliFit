@@ -104,8 +104,8 @@ public class PatientG implements PatientDB{
            try {
             
             Statement s = link.createStatement();
-            query="delete * Patient where rut='"+rut+"'";
-            ResultSet rs=s.executeQuery(query);
+            query="delete * Patient where rut_patient='"+rut+"'";
+            s.executeQuery(query);
             
             return true;
             

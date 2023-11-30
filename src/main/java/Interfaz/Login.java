@@ -203,10 +203,12 @@ public class Login extends javax.swing.JFrame {
     private void acceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptActionPerformed
         ConnectDB conn = new ConnectDB();
         Connection link = conn.Connect();
+        MainWindow main = new MainWindow();
         PatientG patient = new PatientG();
         if(patient.Search(link, parseInt(insertUser.getText()))!=null){
             conn.CloseConection();
-            MainWindow main = new MainWindow();
+            
+            main.setRut(parseInt(insertUser.getText()));
             main.setVisible(true);
             this.dispose();
         }

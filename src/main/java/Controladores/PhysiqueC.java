@@ -40,7 +40,7 @@ public class PhysiqueC implements PhysiqueDB {
         
         try{
             Statement s = link.createStatement();
-            query="INSERT INTO Physique(weight,height,bmi,do_exercise,rut_patient)VALUES('"+physique.getWeight()+"','"+physique.getHeight()+"','"+physique.getBmi()+"','"+physique.getExercise()+"')";
+            query = "INSERT INTO Physique(weight,height,bmi,do_exercise,rut_patient) VALUES('"+physique.getWeight()+"','"+physique.getHeight()+"','"+physique.getBmi()+"','"+physique.getExercise()+"','"+rut_patient+"')";
             s.executeUpdate(query);
             return true;
             

@@ -4,16 +4,38 @@
  */
 package Interfaz;
 
+
+import Clases.Patient;
+import Clases.Physique;
+import Controladores.ConnectDB;
+import Controladores.PhysiqueC;
+import static java.lang.Boolean.parseBoolean;
+import static java.lang.Float.parseFloat;
+import static java.lang.Integer.parseInt;
+import java.sql.Connection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Felip
  */
 public class registerEstate extends javax.swing.JFrame {
+    int rut;
 
+    public int getRut() {
+        return rut;
+    }
+
+    public void setRut(int rut) {
+        this.rut = rut;
+    }
     /**
      * Creates new form registarEstate
      */
-    public registerEstate() {
+    public registerEstate(){
         initComponents();
     }
 
@@ -49,6 +71,11 @@ public class registerEstate extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButton1.setText("ENTER");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Altura:");
 
@@ -144,8 +171,39 @@ public class registerEstate extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enterHeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterHeightActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_enterHeightActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ConnectDB conn = new ConnectDB();
+        Connection link = conn.Connect();
+        PhysiqueC phyC = new PhysiqueC();
+        Physique phy = new Physique();
+        Patient pat = new Patient();
+        Login log = new Login();
+        
+        
+        if(enterBmi.getText().equals("") || enterDoExersice.getText().equals("") || enterHeight.getText().equals("")|| enterWeight.getText().equals("")){
+        JOptionPane.showMessageDialog(null, "Hay celdas vacias");
+        }
+        else{
+
+            phy.setBmi(parseFloat(enterBmi.getText()));
+            phy.setExercise(parseInt(enterDoExersice.getText()));
+            phy.setHeight(parseFloat(enterHeight.getText()));
+            phy.setWeight(parseFloat(enterWeight.getText()));
+            
+
+            if(phyC.Create(conn.Connect(), phy, getRut())== true){
+                JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente");
+                log.setVisible(true);
+                this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Se produjo un error");
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
