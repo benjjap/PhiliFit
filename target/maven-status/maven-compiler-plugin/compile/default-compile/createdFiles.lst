@@ -8,6 +8,7 @@ Interfaz\perfil.class
 Interfaz\registerEstate.class
 Interfaz\perfil$2.class
 Interfaz\registerEstate$2.class
+Clases\TrainerDB.class
 Interfaz\Login$3.class
 Interfaz\Login$1.class
 Interfaz\registerEstate$1.class
@@ -31,5 +32,6 @@ Clases\PhysiqueDB.class
 Interfaz\register.class
 Interfaz\Login.class
 Interfaz\MainWindow.class
+Controladores\TrainerC.class
 Interfaz\Login$2.class
 Clases\ExerciseDB.class

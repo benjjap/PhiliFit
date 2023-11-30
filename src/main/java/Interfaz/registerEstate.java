@@ -57,8 +57,6 @@ public class registerEstate extends javax.swing.JFrame {
         enterHeight = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
         enterWeight = new javax.swing.JFormattedTextField();
-        jLabel3 = new javax.swing.JLabel();
-        enterBmi = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
         enterDoExersice = new javax.swing.JFormattedTextField();
 
@@ -88,8 +86,6 @@ public class registerEstate extends javax.swing.JFrame {
 
         jLabel2.setText("Peso:");
 
-        jLabel3.setText("BMI:");
-
         jLabel4.setText("Hacia ejercicio antes?:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -97,24 +93,26 @@ public class registerEstate extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(179, 179, 179)
-                .addComponent(jButton1)
-                .addGap(50, 50, 50))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(enterBmi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(enterHeight, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel1)
+                    .addComponent(enterHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(enterWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(enterDoExersice, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(85, 85, 85))
+                    .addComponent(enterWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(125, 125, 125))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(enterDoExersice, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,14 +125,10 @@ public class registerEstate extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(enterHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(enterWeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(111, 111, 111)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enterBmi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterDoExersice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(99, 99, 99)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(enterDoExersice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(17, 17, 17))
@@ -185,19 +179,19 @@ public class registerEstate extends javax.swing.JFrame {
         Login log = new Login();
         
         
-        if(enterBmi.getText().equals("") || enterDoExersice.getText().equals("") || enterHeight.getText().equals("")|| enterWeight.getText().equals("")){
+        if(enterDoExersice.getText().equals("") || enterHeight.getText().equals("")|| enterWeight.getText().equals("")){
         JOptionPane.showMessageDialog(null, "Hay celdas vacias");
         }
         else{
 
-            phy.setBmi(parseFloat(enterBmi.getText()));
+            
             phy.setExercise(parseInt(enterDoExersice.getText()));
             phy.setHeight(parseFloat(enterHeight.getText()));
             phy.setWeight(parseFloat(enterWeight.getText()));
+            phy.calculate_bmi();
             
-            pat = patG.Search(link, getRut());
             if(phyC.Create(conn.Connect(), phy, getRut())== true){
-                pat.setPhysical_state(phy);
+                
                 JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente");
                 log.setVisible(true);
                 this.dispose();
@@ -245,7 +239,6 @@ public class registerEstate extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField enterBmi;
     private javax.swing.JFormattedTextField enterDoExersice;
     private javax.swing.JFormattedTextField enterHeight;
     private javax.swing.JFormattedTextField enterWeight;
@@ -253,7 +246,6 @@ public class registerEstate extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
