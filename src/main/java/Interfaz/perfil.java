@@ -5,6 +5,7 @@
 package Interfaz;
 
 import Clases.Patient;
+import Clases.Physique;
 import Controladores.ConnectDB;
 import Controladores.PatientG;
 import Controladores.PhysiqueC;
@@ -107,37 +108,40 @@ public class perfil extends javax.swing.JFrame {
         RUT.setLayout(RUTLayout);
         RUTLayout.setHorizontalGroup(
             RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RUTLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(RUTLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(back)
-                        .addGap(19, 19, 19))
-                    .addGroup(RUTLayout.createSequentialGroup()
-                        .addComponent(height)
-                        .addGap(170, 170, 170)
-                        .addComponent(weight)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RUTLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bmi)
-                    .addComponent(jButton1))
-                .addGap(27, 27, 27))
+                .addComponent(back)
+                .addGap(19, 19, 19))
             .addGroup(RUTLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(date)
                     .addGroup(RUTLayout.createSequentialGroup()
-                        .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(nombre))
-                        .addGap(170, 170, 170)
-                        .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(height)
+                        .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(RUTLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1)
+                                .addGap(27, 27, 27))
+                            .addGroup(RUTLayout.createSequentialGroup()
+                                .addGap(158, 158, 158)
+                                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(RUTLayout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(RUTLayout.createSequentialGroup()
+                                        .addComponent(weight)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                                        .addComponent(bmi)
+                                        .addGap(72, 72, 72))))))
+                    .addGroup(RUTLayout.createSequentialGroup()
+                        .addComponent(nombre)
+                        .addContainerGap())
+                    .addGroup(RUTLayout.createSequentialGroup()
+                        .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(date)
                             .addComponent(lastName)
-                            .addComponent(email))))
-                .addContainerGap(220, Short.MAX_VALUE))
+                            .addComponent(email))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         RUTLayout.setVerticalGroup(
             RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,19 +151,19 @@ public class perfil extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombre)
-                    .addComponent(lastName))
-                .addGap(56, 56, 56)
-                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(email))
-                .addGap(61, 61, 61)
+                    .addComponent(jLabel7))
+                .addGap(55, 55, 55)
+                .addComponent(lastName)
+                .addGap(72, 72, 72)
                 .addComponent(date)
-                .addGap(101, 101, 101)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(email)
+                .addGap(87, 87, 87)
                 .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(height)
                     .addComponent(weight)
-                    .addComponent(bmi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
+                    .addComponent(bmi)
+                    .addComponent(height))
+                .addGap(90, 90, 90)
                 .addComponent(jButton1)
                 .addGap(22, 22, 22))
         );
@@ -200,8 +204,10 @@ public class perfil extends javax.swing.JFrame {
         Connection link = conn.Connect();
         PatientG patient = new PatientG();
         PhysiqueC phyC = new PhysiqueC();
+        Physique phy = new Physique();
         Patient pat = new Patient();
         pat = patient.Search(link, getRut());
+        phy = phyC.Search(link, getRut());
         
         
         if(pat != null){
@@ -213,9 +219,9 @@ public class perfil extends javax.swing.JFrame {
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             date.setText("Fecha de nacimiento: "+formato.format(fechaNacimiento));
             email.setText("Correo Electronico: "+pat.getEmail());
-            //weight.setText(String.valueOf(pat.getPhysical_state().getWeight()));
-            //height.setText(String.valueOf(pat.getPhysical_state().getHeight()));
-            //bmi.setText(String.valueOf(pat.getPhysical_state().getBmi()));
+            weight.setText("Peso: "+String.valueOf(phy.getWeight()));
+            height.setText("Altura: "+String.valueOf(phy.getHeight()));
+            bmi.setText("Bmi: "+String.valueOf((int) phy.getBmi()));
         }
         else{
             JOptionPane.showMessageDialog(null, "Error al cargar los datos");
