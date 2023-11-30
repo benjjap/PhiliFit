@@ -302,8 +302,13 @@ public class registerEstate extends javax.swing.JFrame {
         Connection link = conn.Connect();
         PhysiqueC phyC = new PhysiqueC();
         Physique phy = new Physique();
+        RutineC rutiC = new RutineC();
+        Rutine ruti = new Rutine();
+        PatientG patG = new PatientG();
+        Patient pat = new Patient();
+        
         MainWindow main = new MainWindow();
-        main.setRut(getRut());
+        
         
         if(enterHeight.equals("") || enterWeight.equals("")){
             JOptionPane.showMessageDialog(null, "Hay celdas vacias");
@@ -318,10 +323,35 @@ public class registerEstate extends javax.swing.JFrame {
             phy.setHeight(parseFloat(enterHeight.getText()));
             phy.setWeight(parseFloat(enterWeight.getText()));
             
-            System.out.println(getRut());
+            
+            
             if(phyC.Update(link, getRut(), phy.getWeight(), phy.getHeight(), phy.calculate_bmi(), phy.getExercise())==true){
+                pat = patG.Search(link, getRut());
+                pat.setPhysical_state(phy);
+                
+                if(pat.getPhysical_state().getBmi()<18.5){
+                    ruti = rutiC.Search(link, 1);
+                    rutiC.set_rutine(link, ruti, pat);
+                    }
+                else if(phy.getBmi() >= 18.5 && 24.9 >= phy.getBmi()){  
+                    ruti = rutiC.Search(link, 2);
+                    rutiC.set_rutine(link, ruti, pat);
+                }
+                else if(phy.getBmi() >= 25.0 && 29.9 >= phy.getBmi()){
+                    ruti = rutiC.Search(link, 3);
+                    rutiC.set_rutine(link, ruti, pat);
+                }
+                else if(phy.getBmi() >= 30.0 && 34.9 >= phy.getBmi()){
+                    ruti = rutiC.Search(link, 4);
+                    rutiC.set_rutine(link, ruti, pat);
+                }
+                else if(phy.getBmi() >= 35.0){
+                    ruti = rutiC.Search(link, 5);
+                    rutiC.set_rutine(link, ruti, pat);
+                }
                 JOptionPane.showMessageDialog(null, "Se ah actualizado");
                 System.out.println(getRut());
+                main.setRut(getRut());
                 main.setVisible(true);
                 this.dispose();
                  

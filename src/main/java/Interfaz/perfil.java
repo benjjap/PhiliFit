@@ -274,9 +274,11 @@ public class perfil extends javax.swing.JFrame {
         Connection link = conn.Connect();
         PatientG patient = new PatientG();
         Patient pat = new Patient();
+        Login log = new Login();
         
         if(patient.Delete(conn.Connect(), getRut())==true){
             JOptionPane.showMessageDialog(null, "Se ha eliminado exitosamente");
+            log.setVisible(true);
             this.dispose();
         }
         

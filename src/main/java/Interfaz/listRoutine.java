@@ -155,9 +155,9 @@ public class listRoutine extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         MainWindow main = new MainWindow();
-            main.setRut(getRut());
-            main.setVisible(true);
-            this.dispose();
+        main.setRut(getRut());
+        main.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void mostrar(String tabla, int rutineId){

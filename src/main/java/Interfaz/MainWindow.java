@@ -215,6 +215,7 @@ public class MainWindow extends javax.swing.JFrame {
         list.setRut(getRut());
         list.mostrar("rutine", idRutine);
         list.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
