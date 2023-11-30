@@ -158,7 +158,9 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        
         listTrainers list = new listTrainers();
+        list.mostrar("Trainer");
         list.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
