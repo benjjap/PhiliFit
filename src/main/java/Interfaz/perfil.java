@@ -36,6 +36,7 @@ public class perfil extends javax.swing.JFrame {
      */
     public perfil() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -49,16 +50,17 @@ public class perfil extends javax.swing.JFrame {
 
         fondo = new javax.swing.JPanel();
         RUT = new javax.swing.JPanel();
-        nombre = new javax.swing.JLabel();
-        lastName = new javax.swing.JLabel();
-        date = new javax.swing.JLabel();
         height = new javax.swing.JLabel();
         weight = new javax.swing.JLabel();
         bmi = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        nombre = new javax.swing.JLabel();
+        lastName = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        date = new javax.swing.JLabel();
         email = new javax.swing.JLabel();
         back = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,36 +68,17 @@ public class perfil extends javax.swing.JFrame {
 
         RUT.setBackground(new java.awt.Color(255, 255, 255));
 
-        nombre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        nombre.setText("Nombre:");
-
-        lastName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        lastName.setText("Apellido:");
-
-        date.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        date.setText("Fecha de Nacimiento:");
-
         height.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        height.setForeground(new java.awt.Color(51, 51, 51));
         height.setText("Altura:");
 
         weight.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        weight.setForeground(new java.awt.Color(51, 51, 51));
         weight.setText("Peso:");
 
         bmi.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        bmi.setForeground(new java.awt.Color(51, 51, 51));
         bmi.setText("BMI:");
-
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setText("Rut:");
-
-        email.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        email.setText("Email:");
-
-        back.setText("BACK");
-        back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("DELETE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -108,64 +91,99 @@ public class perfil extends javax.swing.JFrame {
         RUT.setLayout(RUTLayout);
         RUTLayout.setHorizontalGroup(
             RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RUTLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(back)
-                .addGap(19, 19, 19))
             .addGroup(RUTLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
                 .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(RUTLayout.createSequentialGroup()
-                        .addComponent(height)
-                        .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(RUTLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1)
-                                .addGap(27, 27, 27))
-                            .addGroup(RUTLayout.createSequentialGroup()
-                                .addGap(158, 158, 158)
-                                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(RUTLayout.createSequentialGroup()
-                                        .addComponent(jLabel7)
-                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(RUTLayout.createSequentialGroup()
-                                        .addComponent(weight)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
-                                        .addComponent(bmi)
-                                        .addGap(72, 72, 72))))))
-                    .addGroup(RUTLayout.createSequentialGroup()
-                        .addComponent(nombre)
-                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RUTLayout.createSequentialGroup()
+                        .addGap(0, 389, Short.MAX_VALUE)
+                        .addComponent(jButton1))
                     .addGroup(RUTLayout.createSequentialGroup()
                         .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(date)
-                            .addComponent(lastName)
-                            .addComponent(email))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(height)
+                            .addComponent(weight)
+                            .addComponent(bmi))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         RUTLayout.setVerticalGroup(
             RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RUTLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(back)
-                .addGap(16, 16, 16)
-                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombre)
-                    .addComponent(jLabel7))
-                .addGap(55, 55, 55)
-                .addComponent(lastName)
-                .addGap(72, 72, 72)
-                .addComponent(date)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(email)
-                .addGap(87, 87, 87)
-                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(weight)
-                    .addComponent(bmi)
-                    .addComponent(height))
-                .addGap(90, 90, 90)
+                .addComponent(height)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(weight)
+                .addGap(35, 35, 35)
+                .addComponent(bmi)
+                .addGap(17, 17, 17)
                 .addComponent(jButton1)
-                .addGap(22, 22, 22))
+                .addContainerGap())
+        );
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        nombre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        nombre.setForeground(new java.awt.Color(51, 51, 51));
+        nombre.setText("Nombre:");
+
+        lastName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lastName.setForeground(new java.awt.Color(51, 51, 51));
+        lastName.setText("Apellido:");
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setText("Rut:");
+
+        date.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        date.setForeground(new java.awt.Color(51, 51, 51));
+        date.setText("Fecha de Nacimiento:");
+
+        email.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        email.setForeground(new java.awt.Color(51, 51, 51));
+        email.setText("Email:");
+
+        back.setText("BACK");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(date)
+                            .addComponent(email))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(nombre)
+                        .addGap(126, 126, 126)
+                        .addComponent(lastName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(back)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombre)
+                    .addComponent(lastName)
+                    .addComponent(back))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel7)
+                .addGap(40, 40, 40)
+                .addComponent(date)
+                .addGap(43, 43, 43)
+                .addComponent(email)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
@@ -174,15 +192,21 @@ public class perfil extends javax.swing.JFrame {
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(RUT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(RUT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(fondoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(RUT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(RUT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(423, 423, 423))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,7 +217,7 @@ public class perfil extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 476, Short.MAX_VALUE)
         );
 
         pack();
@@ -293,6 +317,7 @@ public class perfil extends javax.swing.JFrame {
     private javax.swing.JLabel height;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lastName;
     private javax.swing.JLabel nombre;
     private javax.swing.JLabel weight;
