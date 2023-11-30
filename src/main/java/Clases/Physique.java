@@ -28,6 +28,7 @@ public class Physique {
         this.height = height;
         this.weight = weight;
         this.exercise = exercise;
+        this.bmi = calculate_bmi();
     }
 
     //Getters and setters
@@ -62,6 +63,10 @@ public class Physique {
 
     public void setExercise(int exercise) {
         this.exercise = exercise;
+    }
+    
+    public float calculate_bmi(){
+        return this.bmi = (float) (this.weight/pow(this.height,2));
     }
 
 }
