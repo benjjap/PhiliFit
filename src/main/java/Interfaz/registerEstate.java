@@ -8,6 +8,7 @@ package Interfaz;
 import Clases.Patient;
 import Clases.Physique;
 import Controladores.ConnectDB;
+import Controladores.PatientG;
 import Controladores.PhysiqueC;
 import static java.lang.Boolean.parseBoolean;
 import static java.lang.Float.parseFloat;
@@ -178,6 +179,7 @@ public class registerEstate extends javax.swing.JFrame {
         ConnectDB conn = new ConnectDB();
         Connection link = conn.Connect();
         PhysiqueC phyC = new PhysiqueC();
+        PatientG patG = new PatientG();
         Physique phy = new Physique();
         Patient pat = new Patient();
         Login log = new Login();
@@ -193,8 +195,9 @@ public class registerEstate extends javax.swing.JFrame {
             phy.setHeight(parseFloat(enterHeight.getText()));
             phy.setWeight(parseFloat(enterWeight.getText()));
             
-
+            pat = patG.Search(link, getRut());
             if(phyC.Create(conn.Connect(), phy, getRut())== true){
+                pat.setPhysical_state(phy);
                 JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente");
                 log.setVisible(true);
                 this.dispose();

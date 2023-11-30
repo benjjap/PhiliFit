@@ -7,7 +7,10 @@ package Interfaz;
 import Clases.Patient;
 import Controladores.ConnectDB;
 import Controladores.PatientG;
+import Controladores.PhysiqueC;
 import java.sql.Connection;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +26,8 @@ public class perfil extends javax.swing.JFrame {
 
     public void setRut(int rut) {
         this.rut = rut;
+        
+        mostrar();
     }
     
     /**
@@ -42,15 +47,15 @@ public class perfil extends javax.swing.JFrame {
     private void initComponents() {
 
         fondo = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        RUT = new javax.swing.JPanel();
+        nombre = new javax.swing.JLabel();
+        lastName = new javax.swing.JLabel();
+        date = new javax.swing.JLabel();
+        height = new javax.swing.JLabel();
+        weight = new javax.swing.JLabel();
+        bmi = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
         back = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
@@ -58,23 +63,31 @@ public class perfil extends javax.swing.JFrame {
 
         fondo.setBackground(new java.awt.Color(102, 255, 153));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        RUT.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("Nombre");
+        nombre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        nombre.setText("Nombre:");
 
-        jLabel2.setText("Apellido");
+        lastName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        lastName.setText("Apellido:");
 
-        jLabel3.setText("Fecha de Nacimiento");
+        date.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        date.setText("Fecha de Nacimiento:");
 
-        jLabel4.setText("Altura");
+        height.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        height.setText("Altura:");
 
-        jLabel5.setText("Peso");
+        weight.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        weight.setText("Peso:");
 
-        jLabel6.setText("BMI");
+        bmi.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        bmi.setText("BMI:");
 
-        jLabel7.setText("Rut");
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel7.setText("Rut:");
 
-        jLabel8.setText("Email");
+        email.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        email.setText("Email:");
 
         back.setText("BACK");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -90,61 +103,63 @@ public class perfil extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(123, 452, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout RUTLayout = new javax.swing.GroupLayout(RUT);
+        RUT.setLayout(RUTLayout);
+        RUTLayout.setHorizontalGroup(
+            RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RUTLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RUTLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(back)
-                        .addGap(19, 19, 19))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19))
+                    .addGroup(RUTLayout.createSequentialGroup()
+                        .addComponent(height)
+                        .addGap(170, 170, 170)
+                        .addComponent(weight)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RUTLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bmi)
+                    .addComponent(jButton1))
                 .addGap(27, 27, 27))
+            .addGroup(RUTLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(date)
+                    .addGroup(RUTLayout.createSequentialGroup()
+                        .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(nombre))
+                        .addGap(170, 170, 170)
+                        .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lastName)
+                            .addComponent(email))))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(back)))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel8)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
+        RUTLayout.setVerticalGroup(
+            RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RUTLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(back)
+                .addGap(16, 16, 16)
+                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombre)
+                    .addComponent(lastName))
+                .addGap(56, 56, 56)
+                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(email))
+                .addGap(61, 61, 61)
+                .addComponent(date)
+                .addGap(101, 101, 101)
+                .addGroup(RUTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(height)
+                    .addComponent(weight)
+                    .addComponent(bmi))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 182, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(22, 22, 22))
         );
@@ -155,14 +170,14 @@ public class perfil extends javax.swing.JFrame {
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(RUT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(RUT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -180,8 +195,36 @@ public class perfil extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void mostrar(){
+        ConnectDB conn = new ConnectDB();
+        Connection link = conn.Connect();
+        PatientG patient = new PatientG();
+        PhysiqueC phyC = new PhysiqueC();
+        Patient pat = new Patient();
+        pat = patient.Search(link, getRut());
+        
+        
+        if(pat != null){
+            
+            nombre.setText("Nombre: "+pat.getFirst_name());
+            lastName.setText("Apellido: "+pat.getLast_name());
+            jLabel7.setText("Rut: "+String.valueOf(pat.getRut()));
+            Date fechaNacimiento = pat.getBirth_date();
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            date.setText("Fecha de nacimiento: "+formato.format(fechaNacimiento));
+            email.setText("Correo Electronico: "+pat.getEmail());
+            //weight.setText(String.valueOf(pat.getPhysical_state().getWeight()));
+            //height.setText(String.valueOf(pat.getPhysical_state().getHeight()));
+            //bmi.setText(String.valueOf(pat.getPhysical_state().getBmi()));
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Error al cargar los datos");
+        }
+    }
+    
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        Login log = new Login();
+        MainWindow log = new MainWindow();
+        log.setRut(getRut());
         log.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backActionPerformed
@@ -225,7 +268,7 @@ public class perfil extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -235,17 +278,17 @@ public class perfil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel RUT;
     private javax.swing.JButton back;
+    private javax.swing.JLabel bmi;
+    private javax.swing.JLabel date;
+    private javax.swing.JLabel email;
     private javax.swing.JPanel fondo;
+    private javax.swing.JLabel height;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lastName;
+    private javax.swing.JLabel nombre;
+    private javax.swing.JLabel weight;
     // End of variables declaration//GEN-END:variables
 }
