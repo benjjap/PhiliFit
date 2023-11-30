@@ -13,7 +13,6 @@ public class Exercises {
     private String exercise_name;
     private String type;
     private String description;
-    private DataExercises data;
     
     public Exercises(){
         this.exercise_name = null;
@@ -28,11 +27,11 @@ public class Exercises {
 
     }
 
-    public String getExercise() {
+    public String getExercise_name() {
         return exercise_name;
     }
 
-    public void setExercise(String exercise) {
+    public void setExercise_name(String exercise) {
         this.exercise_name = exercise;
     }
 
@@ -52,11 +51,4 @@ public class Exercises {
         this.description = description;
     }
 
-    public DataExercises getData() {
-        return data;
-    }
-
-    public void setData(DataExercises data) {
-        this.data = data;
-    }
 }
