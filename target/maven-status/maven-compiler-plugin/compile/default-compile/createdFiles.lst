@@ -5,6 +5,7 @@ Controladores\PatientG.class
 Interfaz\Login$4.class
 Interfaz\perfil.class
 Interfaz\registerEstate.class
+Controladores\RutineC.class
 Interfaz\Login$1.class
 Interfaz\register$2.class
 Clases\Exercises.class
@@ -23,6 +24,8 @@ Interfaz\MainWindow$3.class
 Clases\Trainer.class
 Interfaz\MainWindow$1.class
 Interfaz\listTrainers.class
+Interfaz\listTrainers$4.class
+Clases\RutineDB.class
 Interfaz\perfil$2.class
 Interfaz\registerEstate$2.class
 Clases\TrainerDB.class
@@ -36,11 +39,11 @@ Interfaz\MainWindow$2.class
 Clases\Person.class
 Clases\PatientDB.class
 Interfaz\perfil$1.class
-Clases\DataExercises.class
 Interfaz\listRoutine$1.class
 Interfaz\listTrainers$2.class
 Interfaz\registerEstate$3.class
 Interfaz\register$1.class
 Clases\PhysiqueDB.class
 Interfaz\Login.class
+Clases\Rutine.class
 Interfaz\Login$2.class

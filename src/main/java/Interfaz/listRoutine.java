@@ -4,11 +4,16 @@
  */
 package Interfaz;
 
+import Clases.Patient;
+import Clases.Physique;
 import Controladores.ConnectDB;
+import Controladores.PatientG;
+import Controladores.PhysiqueC;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,12 +22,22 @@ import javax.swing.table.DefaultTableModel;
  * @author Felip
  */
 public class listRoutine extends javax.swing.JFrame {
+    int rut;
 
+    public int getRut() {
+        return rut;
+    }
+
+    public void setRut(int rut) {
+        this.rut = rut;
+    }
+    
     /**
      * Creates new form listRoutine
      */
     public listRoutine() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -36,33 +51,46 @@ public class listRoutine extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        porEnde = new javax.swing.JLabel();
+        bmi = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         routine = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Esta es la rutina que debe seguir es:");
+        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
+
+        porEnde.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        porEnde.setForeground(new java.awt.Color(255, 255, 255));
+        porEnde.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        porEnde.setText("Por ende, esta es la rutina que se le asigno:");
+
+        bmi.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        bmi.setForeground(new java.awt.Color(255, 255, 255));
+        bmi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(bmi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(porEnde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                .addComponent(bmi, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(porEnde)
                 .addContainerGap())
         );
 
@@ -79,15 +107,24 @@ public class listRoutine extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(routine);
 
+        jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -96,8 +133,10 @@ public class listRoutine extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -108,42 +147,53 @@ public class listRoutine extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MainWindow main = new MainWindow();
+            main.setRut(getRut());
+            main.setVisible(true);
+            this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void mostrar(String tabla, int rutineId){
-        String sql = "SELECT * FROM'" + tabla +"' JOIN EXERCISE WHERE rutine_id _'"+rutineId+"'";
+        PhysiqueC patient = new PhysiqueC();
+        Physique pat = new Physique();
+        
+        String sql = "SELECT * FROM " + tabla + " JOIN exercise USING(rutine_id) WHERE exercise.rutine_id ='" + rutineId + "'";
         Statement st;
         
         ConnectDB con = new ConnectDB();
         Connection link = con.Connect();
-        
+        pat = patient.Search(link,getRut());
         DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("exercise_name");
-        model.addColumn("type");
-        model.addColumn("description");
+        model.addColumn("Nombre ejercicio");
+        model.addColumn("Tipo de ejercicio");
+        model.addColumn("Descripcion");
         
         routine.setModel(model);
-        
+        bmi.setText("Su bmi es el siguiente: "+pat.getBmi());
         String [] datos = new String[3];
         
         try{
             st = link.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while(rs.next()){
-                datos[0]=rs.getString(1);
-                datos[1]=rs.getString(2);
-                datos[2]=rs.getString(3);
+                String exerciseName = rs.getString("exercise.exercise_name");
+                String type = rs.getString("exercise.type");
+                String description = rs.getString("exercise.description");
 
-                model.addRow(datos);
-                        
+            model.addRow(new String[]{exerciseName, type, description});
+
+            
             }
             
         }catch(SQLException e){
-            JOptionPane.showMessageDialog(null, "Error ");
+            JOptionPane.showMessageDialog(null, "Error "+ e.getMessage());
         }
     }
     /**
@@ -182,10 +232,12 @@ public class listRoutine extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel bmi;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel porEnde;
     private javax.swing.JTable routine;
     // End of variables declaration//GEN-END:variables
 }

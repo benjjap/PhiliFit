@@ -9,6 +9,11 @@ import Controladores.ConnectDB;
 import Controladores.PatientG;
 import Controladores.PhysiqueC;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -186,7 +191,30 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ConnectDB conn = new ConnectDB();
+        Connection link = conn.Connect();
+        PatientG patient = new PatientG();
+        Patient pat = new Patient();
+        pat = patient.Search(link, getRut());
+        int idRutine = 0;
+        try{
+            Statement s = link.createStatement();
+            String sql = "SELECT rutine_id FROM Patient WHERE rut_patient ='"+pat.getRut()+"'";
+            ResultSet rs=s.executeQuery(sql);
+            
+            if(rs.next()){
+                idRutine=rs.getInt("rutine_id");
+            }
+            
         
+        }catch (SQLException ex) {
+            Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        listRoutine list = new listRoutine();
+        list.setRut(getRut());
+        list.mostrar("rutine", idRutine);
+        list.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

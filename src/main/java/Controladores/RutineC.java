@@ -30,7 +30,7 @@ public class RutineC implements RutineDB{
             query="select * from Rutine where rutine_id='"+rutine_id+"'";
             ResultSet rs=s.executeQuery(query);
             
-            while (rs.next()){
+            while(rs.next()){
                rutine.setNumber_exercises(rs.getInt("number_exercises"));
                rutine.setRutine_id(rs.getInt("rutine_id"));
                rutine.setBmi_type(rs.getString("bmi_type"));

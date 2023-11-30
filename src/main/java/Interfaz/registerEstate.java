@@ -7,9 +7,11 @@ package Interfaz;
 
 import Clases.Patient;
 import Clases.Physique;
+import Clases.Rutine;
 import Controladores.ConnectDB;
 import Controladores.PatientG;
 import Controladores.PhysiqueC;
+import Controladores.RutineC;
 import static java.lang.Boolean.parseBoolean;
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
@@ -223,6 +225,8 @@ public class registerEstate extends javax.swing.JFrame {
         PatientG patG = new PatientG();
         Physique phy = new Physique();
         Patient pat = new Patient();
+        RutineC rutiC = new RutineC();
+        Rutine ruti = new Rutine();
         Login log = new Login();
         
         
@@ -241,8 +245,33 @@ public class registerEstate extends javax.swing.JFrame {
             phy.setWeight(parseFloat(enterWeight.getText()));
             phy.calculate_bmi();
             
+            patG.Search(link, getRut());
+            pat = patG.Search(link, getRut());
+            pat.setPhysical_state(phy);
+            
+            
+            
             if(phyC.Create(conn.Connect(), phy, getRut())== true){
-                
+                if(pat.getPhysical_state().getBmi()<18.5){
+                    ruti = rutiC.Search(link, 1);
+                    rutiC.set_rutine(link, ruti, pat);
+                    }
+                else if(phy.getBmi() >= 18.5 && 24.9 >= phy.getBmi()){  
+                    ruti = rutiC.Search(link, 2);
+                    rutiC.set_rutine(link, ruti, pat);
+                }
+                else if(phy.getBmi() >= 25.0 && 29.9 >= phy.getBmi()){
+                    ruti = rutiC.Search(link, 3);
+                    rutiC.set_rutine(link, ruti, pat);
+                }
+                else if(phy.getBmi() >= 30.0 && 34.9 >= phy.getBmi()){
+                    ruti = rutiC.Search(link, 4);
+                    rutiC.set_rutine(link, ruti, pat);
+                }
+                else if(phy.getBmi() >= 35.0){
+                    ruti = rutiC.Search(link, 5);
+                    rutiC.set_rutine(link, ruti, pat);
+                }
                 JOptionPane.showMessageDialog(null, "Se ha registrado exitosamente");
                 log.setVisible(true);
                 this.dispose();
