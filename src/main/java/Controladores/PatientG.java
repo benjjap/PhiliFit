@@ -155,4 +155,15 @@ public class PatientG implements PatientDB{
         
         return 1;
     }
+    
+    public void set_trainer(Connection link, int rut_trainer, Patient patient){
+        query = "UPDATE Patient SET rut_trainer ='"+rut_trainer+"' WHERE rut_patient = '"+patient.getRut()+"'";
+        
+        try{
+            Statement s = link.createStatement();
+            s.executeUpdate(query);
+        }catch (SQLException ex) {
+            Logger.getLogger(ConnectDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
