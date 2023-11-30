@@ -116,7 +116,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Por ende, esta es la rutina que se le asigno:"/>
+                <Property name="text" type="java.lang.String" value="Esta es la rutina que le hemos asignado"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="bmi">

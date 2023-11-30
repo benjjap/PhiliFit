@@ -51,12 +51,14 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="12" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <Component id="jPanel3" min="-2" pref="295" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -67,7 +69,7 @@
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="39" max="32767" attributes="0"/>
+                  <EmptySpace pref="38" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -103,14 +105,17 @@
                               </Group>
                           </Group>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="enterDoExercise" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="enter" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                              <Component id="update" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel5" max="32767" attributes="0"/>
+                                  <Component id="update" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="enterDoExercise" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="47" max="32767" attributes="0"/>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -131,12 +136,14 @@
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="enterDoExercise" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="33" max="32767" attributes="0"/>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="enter" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="update" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -144,10 +151,13 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="enter">
               <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Dialog" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="REGISTER"/>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="REGISTRAR"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="enterActionPerformed"/>
@@ -218,13 +228,18 @@
                   <Font name="Dialog" size="14" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="UPDATE"/>
+                <Property name="text" type="java.lang.String" value="ACTUALIZAR"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Solo si ya tiene cuenta!"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -241,10 +256,9 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel3" pref="254" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel3" min="-2" pref="297" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

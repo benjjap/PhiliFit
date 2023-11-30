@@ -67,7 +67,7 @@ public class listRoutine extends javax.swing.JFrame {
         porEnde.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         porEnde.setForeground(new java.awt.Color(255, 255, 255));
         porEnde.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        porEnde.setText("Por ende, esta es la rutina que se le asigno:");
+        porEnde.setText("Esta es la rutina que le hemos asignado");
 
         bmi.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         bmi.setForeground(new java.awt.Color(255, 255, 255));
@@ -176,7 +176,7 @@ public class listRoutine extends javax.swing.JFrame {
         model.addColumn("Descripcion");
         
         routine.setModel(model);
-        bmi.setText("Su bmi es el siguiente: "+pat.getBmi());
+        bmi.setText("Su IMC es "+Math.round(pat.getBmi()));
         String [] datos = new String[3];
         
         try{

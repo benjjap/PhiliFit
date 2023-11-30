@@ -79,7 +79,7 @@ public class perfil extends javax.swing.JFrame {
 
         bmi.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         bmi.setForeground(new java.awt.Color(51, 51, 51));
-        bmi.setText("BMI:");
+        bmi.setText("IMC:");
 
         javax.swing.GroupLayout RUTLayout = new javax.swing.GroupLayout(RUT);
         RUT.setLayout(RUTLayout);
@@ -127,7 +127,7 @@ public class perfil extends javax.swing.JFrame {
         email.setForeground(new java.awt.Color(51, 51, 51));
         email.setText("Email:");
 
-        back.setText("BACK");
+        back.setText("ATRAS");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
@@ -169,17 +169,17 @@ public class perfil extends javax.swing.JFrame {
                 .addComponent(date)
                 .addGap(43, 43, 43)
                 .addComponent(email)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        delete.setText("DELETE");
+        delete.setText("ELIMINAR");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteActionPerformed(evt);
             }
         });
 
-        update.setText("UPDATE");
+        update.setText("ACTUALIZAR");
         update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateActionPerformed(evt);
@@ -208,7 +208,7 @@ public class perfil extends javax.swing.JFrame {
         fondoLayout.setVerticalGroup(
             fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(RUT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
