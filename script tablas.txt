@@ -1,0 +1,51 @@
+CREATE TABLE Trainer
+(
+  birth_date DATE NOT NULL,
+  rut_trainer INT NOT NULL,
+  frist_name VARCHAR(200) NOT NULL,
+  last_name VARCHAR(200) NOT NULL,
+  specialty VARCHAR(200) NOT NULL,
+  PRIMARY KEY (rut_trainer)
+);
+
+CREATE TABLE Rutine
+(
+  number_exercises INT NOT NULL,
+  rutine_id INT NOT NULL,
+  bmi_type VARCHAR(200) NOT NULL,
+  PRIMARY KEY (rutine_id)
+);
+
+CREATE TABLE Patient
+(
+  first_name VARCHAR(200) NOT NULL,
+  rut_patient INT NOT NULL,
+  last_name VARCHAR(200) NOT NULL,
+  birth_date DATE NOT NULL,
+  email VARCHAR(200) NOT NULL,
+  password VARCHAR(200) NOT NULL,
+  rutine_id INT,
+  rut_trainer INT,
+  PRIMARY KEY (rut_patient),
+  FOREIGN KEY (rutine_id) REFERENCES Rutine(rutine_id),
+  FOREIGN KEY (rut_trainer) REFERENCES Trainer(rut_trainer)
+);
+
+CREATE TABLE Exercise
+(
+  exercise_name VARCHAR(200) NOT NULL,
+  type VARCHAR(200) NOT NULL,
+  description VARCHAR(500) NOT NULL,
+  rutine_id INT NOT NULL,
+  FOREIGN KEY (rutine_id) REFERENCES Rutine(rutine_id)
+);
+
+CREATE TABLE Physique
+(
+  weight FLOAT NOT NULL,
+  height FLOAT NOT NULL,
+  bmi FLOAT NOT NULL,
+  do_exercise INT NOT NULL,
+  rut_patient INT NOT NULL,
+  FOREIGN KEY (rut_patient) REFERENCES Patient(rut_patient)
+);
